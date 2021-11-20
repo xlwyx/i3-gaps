@@ -1,0 +1,37 @@
+
+# packs #
+
+xorg xorg-xinit i3 i3lock-color i3blocks dmenu kitty nitrogen leafpad (* mousepad, gedit, medit, etc..) lxappearance mc ranger picom papirus-icon-theme plata-theme rofi rofi-emoji Adapta acip
+
+# enable display manager #
+sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
+
+nvim ~/.xinitrc
+nano ~/.xinitrc
+## At last line ##
+exec i3
+-----
+:wq! --> save configurarion -- nvim
+Ctrl+o, them Ctrl+x --> save and get out -- nano
+
+# configure keyboard #
+
+doas setxkbmap es
+
+# config ~/.config/i3/config
+
+## In case of installing picom, for its correct operation; it is configured in:
+doas nano /usr/share/examples/picom/picom.sample.conf     ## this is on Void..
+    -- On Transparency/Opacity:
+    inactive-opacity-override = true
+    # inactive-opacity-override = false;
+
+### someone data ###
+
+mkdir -p .config/i3blocks/      ## make a dir..
+i3block.conf --> sudo cp  ~/.config/i3blocks/i3blocks.conf  [For this fisrt, You have create with: < mkdir ·config/i3blocks > ]
+For the i3block's scrips; first, you have to create folder with: mkdir ~/.config/scripts/ --> Here, copy the scripts so: cp ~/i3_config/scripts/* ·/.config/scripts/ . Before, extract it: unzip scripts.zip
+.....
+.....
+
+Thanks Guys!
