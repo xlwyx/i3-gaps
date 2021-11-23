@@ -56,7 +56,7 @@ floating_modifier Mod1
 bindsym Mod1+Return exec i3-sensible-terminal
 
 # start Browser
-bindsym Mod1+b exec waterfox-bin
+bindsym Mod1+b exec waterfox-g4
 assign [class="Waterfox"] $ws2
 
 # start mail
