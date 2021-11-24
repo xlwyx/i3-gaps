@@ -57,7 +57,7 @@ bindsym Mod1+Return exec i3-sensible-terminal
 
 # start Browser
 bindsym Mod1+b exec waterfox-g4
-assign [class="Waterfox"] $ws2
+assign [class="Waterfox-g4"] $ws2
 
 # start mail
 bindsym Mod1+m exec geary
@@ -70,6 +70,9 @@ assign [class="Virt-manager"] $ws7
 # start gimp
 bindsym Mod1+g exec gimp
 assign [class="Gimp"] $ws8
+
+# Use mouse+mod to drag floating window to their wanted position
+floating_modifier $mod
 
 # kill focused window
 # bindsym Mod1+Shift+q kill
@@ -213,17 +216,17 @@ bindsym Mod1+r mode "resize"
 # Window Colors
 set $bgcolor	#0d020238
 set $ibgcolor	#75351c
-set $fws		#4f695a80
+set $fws	#4f695a80
 set $barcolor   #2d071a0D
 set $textcolor	#f5e8ed
 set $itextcolor #969696
 set $ubgcolor	#00ffff
 
-#                       border          background      text		indicator        
-client.focused          	$fws		$fws		$textcolor	$bgcolor
-client.unfocused       	$ibgcolor		$ibgcolor		$itextcolor  	$ibgcolor
-client.focused_inactive	$ibgcolor		$ibgcolor		$itextcolor    	$ibgcolor
-client.urgent           $ubgcolor	$ubgcolor	$textcolor	$ibgcolor
+#                       	border        	  background     		 text			indicator        
+client.focused          	$fws			$fws			$textcolor		$bgcolor
+client.unfocused	       	$ibgcolor		$ibgcolor		$itextcolor	  	$ibgcolor
+client.focused_inactive		$ibgcolor		$ibgcolor		$itextcolor    		$ibgcolor 
+client.urgent     		$ubgcolor		$ubgcolor		$textcolor		$ibgcolor
 
 # Start i3bar to display a workspace bar (plus the system information >
 # finds out, if available)
@@ -258,7 +261,7 @@ exec_always nitrogen --restore --set-auto
 bindsym $mod+x exec i3lock
 
 # Assign Programs to Workspaces
-for_window [class="Waterfox"] move to workspace $ws2
+for_window [class="Waterfox-g4"] move to workspace $ws2
 for_window [class="Pcmanfm"] move to workspace $ws3
 for_window [class="mpv"] move to workspace $ws4
 for_window [class="Visualboyadvance-m"] move to workspace $ws5
@@ -270,15 +273,14 @@ for_window [class="Gimp"] move to workspace $ws8
 exec_always picom -f
 exec_always xscreensaver -nosplash
 exec_always fcitx5
-exec_always ~/.config/my_script.sh
 
 # Don't change focus with mouse
 focus_follows_mouse no
 
 # gaps
-for_window [class=".*"] border pixel 3
+for_window [class="^.*"] borders pixel 3
 new_window pixel 2
-gaps inner 6
+gaps inner 9
 gaps outer 7
 smart_gaps on
 hide_edge_borders both
@@ -287,6 +289,5 @@ hide_edge_borders both
 default_orientation vertical			#start in opposite orientation from your monitor
 for_window [class=".*"] split toggle		#toggles split at each new window
 bindsym $mod+q split toggle kill		#kill command resets the split
-bindsym $mod+e layout toggle split 	#should already exist but use if split orientation  messes up
-
+bindsym $mod+e layout toggle split	 	#should already exist but use if split orientation  messes up
 
