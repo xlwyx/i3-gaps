@@ -254,9 +254,6 @@ exec_always setxkbmap es
 bindsym --release $mod+Shift+s exec dbus-launch flameshot
 # bindsym --release $mod+Shift+s exec maim -s | xclip -selection clipboard
 
-# Display wallpaper
-exec_always nitrogen --restore --set-auto
-
 # Keybinding for i3lock
 bindsym $mod+x exec i3lock
 
@@ -271,6 +268,7 @@ for_window [class="Gimp"] move to workspace $ws8
 
 # Automatically starting applications on i3 blocks
 exec_always picom -f
+exec_always nitrogen --restore --set-auto
 exec_always pulseaudio -D
 exec_always xscreensaver -nosplash
 exec_always fcitx5
@@ -289,6 +287,6 @@ hide_edge_borders both
 # fibonacci layout
 default_orientation vertical			#start in opposite orientation from your monitor
 for_window [class=".*"] split toggle		#toggles split at each new window
-bindsym $mod+q split toggle kill		#kill command resets the split
-bindsym $mod+e layout toggle split	 	#should already exist but use if split orientation  messes up
+bindsym $mod+Shift+q split toggle kill		#kill command resets the split
+bindsym $mod+Shift+e layout toggle split	 	#should already exist but use if split orientation  messes up
 
