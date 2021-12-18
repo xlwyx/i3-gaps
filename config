@@ -80,7 +80,7 @@ floating_modifier $mod
 # start dmenu (a program launcher)
 # bindsym Mod1+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-bindsym Mod1+d exec "rofi -modi drun,run rofi -show-icons -show drun"
+bindsym $mod+d exec "rofi -modi drun,run rofi -show-icons -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
@@ -288,5 +288,5 @@ hide_edge_borders both
 default_orientation vertical			#start in opposite orientation from your monitor
 for_window [class=".*"] split toggle		#toggles split at each new window
 bindsym $mod+Shift+q split toggle kill		#kill command resets the split
-bindsym $mod+Shift+e layout toggle split	 	#should already exist but use if split orientation  messes up
+bindsym $mod+Shift+e layout toggle split	#should already exist but use if split orientation  messes up
 
