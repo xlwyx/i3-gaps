@@ -144,16 +144,16 @@ bindsym Mod1+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  Terminal"
-set $ws2 "2:  Browser"
-set $ws3 "3:  Folder"
-set $ws4 "4:  Films"
-set $ws5 "5:  Game"
-set $ws6 "6:  Mail"
-set $ws7 "7:  Virtualization"
-set $ws8 "8:  Design"
-set $ws9 "9:  Feed"
-set $ws10 "10:  External_link"
+147 set $ws1 "1:  Terminal"
+148 set $ws2 "2:  Browser"
+149 set $ws3 "3:  Folder"
+150 set $ws4 "4: 契 Films"
+151 set $ws5 "5:  Game"
+152 set $ws6 "6:  Mail"
+153 set $ws7 "7:  Virtualization"
+154 set $ws8 "8:  Design"
+155 set $ws9 "9:  Feed"
+156 set $ws10 "10:  External_link"
 
 # switch to workspace
 bindsym Mod1+1 workspace number $ws1
@@ -215,10 +215,10 @@ bindsym Mod1+r mode "resize"
 
 # Window Colors
 set $bgcolor	#0d020238
-set $ibgcolor	#75351c
-set $fws	#4f695a80
+set $ibgcolor	#b6134a
+set $fws	#050f05
 set $barcolor   #2d071a0D
-set $textcolor	#f5e8ed
+set $textcolor	#faffab
 set $itextcolor #969696
 set $ubgcolor	#00ffff
 
@@ -258,8 +258,8 @@ bindsym --release $mod+Shift+s exec dbus-launch flameshot
 bindsym $mod+x exec i3lock
 
 # Assign Programs to Workspaces
-for_window [class="Waterfox-g4"] move to workspace $ws2
-for_window [class="Pcmanfm"] move to workspace $ws3
+for_window [class="Vivaldi"] move to workspace $ws2
+for_window [class="Thunar"] move to workspace $ws3
 for_window [class="mpv"] move to workspace $ws4
 for_window [class="Visualboyadvance-m"] move to workspace $ws5
 for_window [class="Geary"] move to workspace $ws6
