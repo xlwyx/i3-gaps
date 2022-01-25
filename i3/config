@@ -56,8 +56,8 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start Browser
-bindsym $mod+b exec vivaldi-stable
-assign [class="Vivaldi"] $ws2
+bindsym $mod+b exec waterfox
+assign [class="Waterfox"] $ws2
 
 # start Telegram
 bindsym $mod+p exec telegram-desktop
@@ -153,7 +153,7 @@ bindsym $mod+minus scratchpad show
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:  Terminal"
-set $ws2 "2:  Browser"
+set $ws2 "2:  Browser"
 set $ws3 "3:  Folder"
 set $ws4 "4:  Films"
 set $ws5 "5:  Game"
@@ -219,6 +219,8 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+bindsym $mod+r mode "resize"
+
 # Window Colors
 set $bgcolor	#101c1f
 set $ibgcolor	#684038
@@ -240,7 +242,6 @@ bar {
      position top
      status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
      i3bar_command i3bar --transparency
-     tray_output none
      font pango:monospace 11
      colors {
               background $barcolor
@@ -272,16 +273,16 @@ bindsym --release $mod+Shift+s exec dbus-launch flameshot
 # bindsym --release $mod+Shift+s exec maim -s | xclip -selection clipboard
 
 # Keybinding for i3lock
-bindsym $mod+x exec i3lock-color
+bindsym $mod+x exec i3lock-colors
 
 # Assign Programs to Workspaces
-for_window [class="Vivaldi"] move to workspace $ws2
 for_window [class="Thunar"] move to workspace $ws3
 for_window [class="mpv"] move to workspace $ws4
 for_window [class="Visualboyadvance-m"] move to workspace $ws5
-for_window [class="Geary"] move to workspace $ws6
-for_window [class="Virt-manager"] mode to workspace $ws7
-for_window [class="Gimp"] move to workspace $ws8
+for_window [class="Leafpad"] move to workspace $ws3
+for_window [class="Code"] move to workspace $ws3
+for_window [class="Xreader"] move to workspace $ws3
+for_window [Class="LibreOffice Writer"] move to workspace $ws3
 
 # Automatically starting applications on i3 blocks
 exec_always picom -f
@@ -305,5 +306,3 @@ hide_edge_borders both
 default_orientation vertical			#start in opposite orientation from your monitor
 for_window [class=".*"] split toggle		#toggles split at each new window
 bindsym $mod+Shift+e layout toggle split	#should already exist but use if split orientation  messes up
-
-
