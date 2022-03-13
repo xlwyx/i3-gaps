@@ -34,7 +34,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -55,29 +54,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# start Browser
-bindsym $mod+b exec waterfox
-assign [class="Waterfox"] $ws2
-
-# start Telegram
-bindsym $mod+p exec telegram-desktop
-assign [class="Telegram"] $ws3
-
-# start Signal
-bindsym $mod+o exec signal-desktop
-assign [class="Signal"] $ws3
-
-# start mail
-bindsym $mod+m exec geary
-assign [class="Geary"] $ws6
-
-# start vm-machine
-bindsym $mod+u exec virt-manager
-assign [class="Virt-manager"] $ws7
-
-# start gimp
-bindsym $mod+g exec gimp
-assign [class="Gimp"] $ws8
+# start applictions:
+bindsym $mod+b exec chromium
+bindsym $mod+s exec signal
+bindsym $mod+o exec telegram-desktop 
 
 # Use mouse+mod to drag floating window to their wanted position
 floating_modifier $mod
@@ -278,18 +258,26 @@ bindsym $mod+x exec i3lock-colors
 # Assign Programs to Workspaces
 for_window [class="Thunar"] move to workspace $ws3
 for_window [class="mpv"] move to workspace $ws4
-for_window [class="Visualboyadvance-m"] move to workspace $ws5
+for_window [class="mGBA-qt"] move to workspace $ws5
 for_window [class="Leafpad"] move to workspace $ws3
 for_window [class="Code"] move to workspace $ws3
 for_window [class="Xreader"] move to workspace $ws3
-for_window [Class="LibreOffice Writer"] move to workspace $ws3
+for_window [Class="Soffice"] move to workspace $ws3
+for_window [Class="Virt-Manager"] move to workspace $ws7
+for_window [class="Signal"] move to workspace $ws3
+for_window [class="Geary"] move to workspace $ws6
+for_window [class="Telegram"] move to workspace $ws3
+for_window [class="Virt-Manager"] move to workspace $ws7
+for_window [class="Gimp"] move to workspace $ws8
+for_window [class="Chromium"] move to workspace $ws2
+for_window [class="vlc"] move to workspace $ws6
 
 # Automatically starting applications on i3 blocks
 exec_always picom -f
 exec_always nitrogen --restore --set-auto
 exec_always pulseaudio -D
 exec_always xscreensaver -nosplash
-exec_always fcitx5
+exec_always fcitx -s 3
 
 # Don't change focus with mouse
 focus_follows_mouse no
