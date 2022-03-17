@@ -55,7 +55,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start applictions:
-bindsym $mod+b exec chromium
+bindsym $mod+b exec firefox-bin
 bindsym $mod+s exec signal
 bindsym $mod+o exec telegram-desktop 
 
@@ -267,14 +267,15 @@ for_window [Class="Virt-Manager"] move to workspace $ws7
 for_window [class="Signal"] move to workspace $ws3
 for_window [class="Geary"] move to workspace $ws6
 for_window [class="Telegram"] move to workspace $ws3
-for_window [class="Virt-Manager"] move to workspace $ws7
+for_window [class="Virt \Manager"] move to workspace $ws7
 for_window [class="Gimp"] move to workspace $ws8
-for_window [class="Chromium"] move to workspace $ws2
+for_window [class="Firefox"] move to workspace $ws2
 for_window [class="vlc"] move to workspace $ws6
 
 # Automatically starting applications on i3 blocks
-exec_always picom -f
-exec_always nitrogen --restore --set-auto
+exec_always picom -cCGf
+#exec_always nitrogen --restore --set-auto
+exec_always feh --bg-scale ~/Pictures/Varies21.png
 exec_always pulseaudio -D
 exec_always xscreensaver -nosplash
 exec_always fcitx -s 3
