@@ -1,12 +1,12 @@
 
 # packs #
 
-xorg xorg-xinit i3-gaps i3lock-color i3block dmenu kitty nitrogen leafpad (* mousepad, gedit, medit, etc..) lxappearance mc ranger lm_sensors otf-font-awesome picom papirus-icon-theme plata-theme rofi rofi-emoji Adapta acpi perl-json-xs perl-anyevent-i3
+xorg xorg-xinit i3-gaps i3lock-color i3block dmenu kitty feh leafpad (* mousepad, gedit, medit, etc..) lxappearance mc ranger lm_sensors font-awesome5 picom papirus-icon-theme plata-theme rofi Adapta acpi
 
 # enable display manager #
-sudo cp /etc/X11/xinit/xinitrc ~/.xinitrc
+cp -r /etc/X11/xinit/xinitrc ~/.xinitrc
 
-nvim ~/.xinitrc
+vim ~/.xinitrc
 nano ~/.xinitrc
 ## At last line ##
 exec i3
@@ -29,7 +29,7 @@ doas nano /usr/share/examples/picom/picom.sample.conf     ## this is on Void..
 ### someone data ###
 
 mkdir -p .config/i3blocks/      ## make a dir..
-i3blocks.conf --> cp i3gaps/i3blocks.conf ~/.config/i3blocks/i3blocks.conf  [For this fisrt, You have create with: < mkdir ·config/i3blocks > ]
+i3blocks.conf --> cp i3-gaps/i3blocks.conf ~/.config/i3blocks/i3blocks.conf  [For this fisrt, You have create with: < mkdir ·config/i3blocks > ]
 For the i3block's scrips; first, you have to create folder with: mkdir ~/.config/scripts/ --> Here, copy the scripts so: cp ~/i3_config/scripts/* ·/.config/scripts/ . Before, extract it: unzip scripts.zip
 .....
 .....
