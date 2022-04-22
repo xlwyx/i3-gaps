@@ -55,8 +55,8 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start applictions:
-bindsym $mod+b exec firefox-bin
-bindsym $mod+s exec signal
+bindsym $mod+b exec firefox
+bindsym $mod+y exec signal-desktop
 bindsym $mod+o exec telegram-desktop 
 
 # Use mouse+mod to drag floating window to their wanted position
@@ -256,29 +256,24 @@ bindsym --release $mod+Shift+s exec dbus-launch flameshot
 bindsym $mod+x exec i3lock-colors
 
 # Assign Programs to Workspaces
-for_window [class="Thunar"] move to workspace $ws3
 for_window [class="mpv"] move to workspace $ws4
 for_window [class="mGBA-qt"] move to workspace $ws5
-for_window [class="Leafpad"] move to workspace $ws3
+for_window [class="Stella"] move to workspace $ws5
 for_window [class="Code"] move to workspace $ws3
-for_window [class="Xreader"] move to workspace $ws3
-for_window [Class="Soffice"] move to workspace $ws3
-for_window [Class="Virt-Manager"] move to workspace $ws7
-for_window [class="Signal"] move to workspace $ws3
-for_window [class="Geary"] move to workspace $ws6
-for_window [class="Telegram"] move to workspace $ws3
-for_window [class="Virt \Manager"] move to workspace $ws7
+for_window [class="org.pwmt.zathura"] move to workspace $ws3
+for_window [class="Thunderbird"] move to workspace $ws6
+for_window [class="Telegram"] move to workspace $ws6
+for_window [class="Signal"] move to workspace $ws6
 for_window [class="Gimp"] move to workspace $ws8
 for_window [class="Firefox"] move to workspace $ws2
 for_window [class="vlc"] move to workspace $ws6
 
 # Automatically starting applications on i3 blocks
 exec_always picom -cCGf
-#exec_always nitrogen --restore --set-auto
-exec_always feh --bg-scale ~/Pictures/Varies21.png
+exec_always feh --bg-scale ~/Pictures/piccas_img/img46.jpg
 exec_always pulseaudio -D
 exec_always xscreensaver -nosplash
-exec_always fcitx -s 3
+exec_always fcitx5
 
 # Don't change focus with mouse
 focus_follows_mouse no
