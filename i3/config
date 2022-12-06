@@ -35,11 +35,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+#set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -52,12 +53,13 @@ set $right semicolon
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
-# start applictions:
+# start applications:
 bindsym $mod+b exec firefox
 bindsym $mod+y exec signal-desktop
 bindsym $mod+o exec telegram-desktop 
+bindsym $mod+c exec notepadqq 
 
 # Use mouse+mod to drag floating window to their wanted position
 floating_modifier $mod
@@ -122,8 +124,8 @@ bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
-
 # move the currently focused window to the scratchpad
+
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
@@ -132,16 +134,13 @@ bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  Terminal"
-set $ws2 "2:  Browser"
-set $ws3 "3:  Folder"
-set $ws4 "4:  Films"
-set $ws5 "5:  Game"
-set $ws6 "6:  Mail"
-set $ws7 "7:  Virtualization"
-set $ws8 "8:  Design"
-set $ws9 "9:  Feed"
-set $ws10 "10:  External_link"
+set $ws1 "1:  kods"
+set $ws2 "2:  internets"
+set $ws6 "3:  e-pasts"
+set $ws8 "4:  dizains"
+set $ws4 "5:  birojs"
+set $ws5 "6:  spēles"
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -150,10 +149,6 @@ bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -162,10 +157,6 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -202,27 +193,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Window Colors
-set $bgcolor	#101c1f
-set $ibgcolor	#684038
-set $fws	#e55c3533
-set $barcolor   #03070b33
-set $textcolor	#ffe493
-set $itextcolor #d9ff66
-set $ubgcolor	#420303
+set $bgcolor    #fdf5e6
+set $ibgcolor   #fde7d6
+set $fws        #e0e300cc
+set $barcolor   #182c25
+set $textcolor  #0057e7
+set $itextcolor #008744
+set $ubgcolor   #317873
 
-#                       	border        	  	background     		text			indicator        
-client.focused          	$bgcolor		$bgcolor		$textcolor		$bgcolor
-client.unfocused	       	$ibgcolor		$ibgcolor		$itextcolor	  	$ibgcolor
-client.focused_inactive		$ibgcolor		$ibgcolor		$itextcolor    		$ibgcolor 
-client.urgent     		$ubgcolor		$ubgcolor		$textcolor		$ibgcolor
+#                         border              background        text          indicator
+client.focused            $bgcolor            $bgcolor          $textcolor    $bgcolor
+client.unfocused          $ibgcolor           $ibgcolor         $itextcolor   $ibgcolor
+client.focused_inactive   $ibgcolor           $ibgcolor         $itextcolor   $ibgcolor
+client.urgent             $ubgcolor           $ubgcolor         $textcolor    $ibgcolor
 
 # Start i3bar to display a workspace bar (plus the system information >
 # finds out, if available)
 bar {
      position top
      status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-     i3bar_command i3bar --transparency
-     font pango:monospace 11
+     ##i3bar_command i3bar##
+     font pango:iosevka Ubuntu Font 11
      colors {
               background $barcolor
               separator #0b1314
@@ -230,7 +221,7 @@ bar {
               focused_workspace    $fws         $fws             $textcolor
               inactive_workspace   $ibgcolor    $ibgcolor        $itextcolor
               urgent_workspace     $ubgcolor    $ubgcolor        $textcolor
-	}
+  }
 }
 
 #######################################################################
@@ -249,34 +240,55 @@ exec i3-config-wizard
 exec_always setxkbmap es
 
 # Display flameshot/xclib
-bindsym --release $mod+Shift+s exec dbus-launch flameshot
+bindsym --release $mod+Shift+s exec ~/./screenshot
+# bindsym --release $mod+Shift+s exec dbus-launch flameshot
 # bindsym --release $mod+Shift+s exec maim -s | xclip -selection clipboard
 
+# Start urxvt -name irssi
+assign [class="^URxvt$" instance="^ranger$"] → 3
+
 # Keybinding for i3lock
-bindsym $mod+x exec i3lock-colors
+bindsym $mod+x exec i3lock-color
 
 # Assign Programs to Workspaces
-for_window [class="mpv"] move to workspace $ws4
-for_window [class="mGBA-qt"] move to workspace $ws5
-for_window [class="Stella"] move to workspace $ws5
-for_window [class="Code"] move to workspace $ws3
-for_window [class="org.pwmt.zathura"] move to workspace $ws3
-for_window [class="Thunderbird"] move to workspace $ws6
-for_window [class="Telegram"] move to workspace $ws6
-for_window [class="Signal"] move to workspace $ws6
-for_window [class="Gimp"] move to workspace $ws8
-for_window [class="Firefox"] move to workspace $ws2
-for_window [class="vlc"] move to workspace $ws6
+for_window [class="mpv"] floating enable border pixel 2
+for_window [class="URxvt"] floating enable border pixel 3
+for_window [class="galculator"] floating enable border pixel 3
+for_window [class="Deluge-gtk3"] move to workspace $ws4 floating enable border pixel 4
+for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 2
+for_window [class="Stella"] move to workspace $ws6 floating enable border pixel 3
+for_window [class="thonny"] move to workspace $ws1 floating enable border pixel 3
+for_window [class="Pcmanfm"] move to workspace $ws5 floating enable border pixel 3
+for_window [class="Notepadqq"] floating enable border pixel 3
+for_window [class="qpwgraph"] floating enable border pixel 4
+for_window [class="fcitx-config-gtk3"] floating enable border pixel 3
+#for_window [class="PacketTracer"] move to workspace $ws3 floating enable border pixel 3
+for_window [class="Zathura"] move to workspace $ws5 floating enable border pixel 1
+for_window [class="Soffice"] move to workspace $ws5 floating enable border pixel 3
+for_window [class="Thunderbird"] move to workspace $ws3 floating enable border pixel 2
+for_window [class="Telegram"] move to workspace $ws3 floating enable border pixel 2
+for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 2
+for_window [class="gnome-mahjongg"] move to workspace $ws6 floating enable border pixel 3
+for_window [class="lbreakout2"] move to workspace $ws6 floating enable border pixel 3
+for_window [class="lxappearance"] floating enable border pixel 2
+for_window [class="Pavucontrol"] floating enable border pixel 3
+for_window [class="Gimp"] move to workspace $ws4
+for_window [class="SimpleScreenRecorder"] move to workspace $ws4 floating enable border pixel 2
+for_window [class="vlc"] move to workspace $ws4 floating enable border pixel 3
 
 # Automatically starting applications on i3 blocks
 exec_always picom -cCGf
-exec_always feh --bg-scale ~/Pictures/piccas_img/img46.jpg
-exec_always pulseaudio -D
+exec_always feh --bg-scale ~/Pictures/piccas_img/img69.jpg
+#exec_always ~/./pipewire-pulse
 exec_always xscreensaver -nosplash
-exec_always fcitx5
+#exec_always fcitx5 -s 3
+exec_always xrdb ~/.Xresources
 
 # Don't change focus with mouse
 focus_follows_mouse no
+
+# Mouse Warping
+mouse_warping none
 
 # gaps
 for_window [class="^.*"] borders pixel 3
@@ -287,6 +299,7 @@ smart_gaps on
 hide_edge_borders both
 
 # fibonacci layout
-default_orientation vertical			#start in opposite orientation from your monitor
-for_window [class=".*"] split toggle		#toggles split at each new window
-bindsym $mod+Shift+e layout toggle split	#should already exist but use if split orientation  messes up
+default_orientation vertical              #start in opposite orientation from your monitor
+for_window [class=".*"] split toggle      #toggles split at each new window
+bindsym $mod+Shift+e layout toggle split  #should already exist but use if split orientation  messes up
+
