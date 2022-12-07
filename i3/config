@@ -53,13 +53,13 @@ set $right semicolon
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # start applications:
 bindsym $mod+b exec firefox
 bindsym $mod+y exec signal-desktop
-bindsym $mod+o exec telegram-desktop 
-bindsym $mod+c exec notepadqq 
+bindsym $mod+o exec telegram-desktop
+bindsym $mod+c exec notepadqq
 
 # Use mouse+mod to drag floating window to their wanted position
 floating_modifier $mod
@@ -134,13 +134,12 @@ bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  kods"
-set $ws2 "2:  internets"
-set $ws6 "3:  e-pasts"
-set $ws8 "4:  dizains"
-set $ws4 "5:  birojs"
-set $ws5 "6:  spēles"
-
+set $ws1 "1:  kodas"
+set $ws2 "2:  internetas"
+set $ws3 "3:  paštas"
+set $ws4 "4:  dizainas"
+set $ws5 "5:  biuras"
+set $ws6 "6:  žaidimai"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -193,9 +192,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Window Colors
-set $bgcolor    #fdf5e6
-set $ibgcolor   #fde7d6
-set $fws        #e0e300cc
+set $bgcolor    #b4ea7e
+set $ibgcolor   #ea7eb4
+set $fws        #b1d2f2cc
 set $barcolor   #182c25
 set $textcolor  #0057e7
 set $itextcolor #008744
@@ -244,30 +243,29 @@ bindsym --release $mod+Shift+s exec ~/./screenshot
 # bindsym --release $mod+Shift+s exec dbus-launch flameshot
 # bindsym --release $mod+Shift+s exec maim -s | xclip -selection clipboard
 
-# Start urxvt -name irssi
-assign [class="^URxvt$" instance="^ranger$"] → 3
-
 # Keybinding for i3lock
-bindsym $mod+x exec i3lock-color
+bindsym $mod+x exec i3lock
 
 # Assign Programs to Workspaces
 for_window [class="mpv"] floating enable border pixel 2
-for_window [class="URxvt"] floating enable border pixel 3
-for_window [class="galculator"] floating enable border pixel 3
+for_window [class="firefox"] move to workspace $ws2 floating enable border pixel 4
+for_window [class="Leafpad"] floating enable border pixel 4
+for_window [class="Alacritty"] floating enable border pixel 3
+for_window [class="galculator"] floating enable border pixel 2
 for_window [class="Deluge-gtk3"] move to workspace $ws4 floating enable border pixel 4
-for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 2
-for_window [class="Stella"] move to workspace $ws6 floating enable border pixel 3
-for_window [class="thonny"] move to workspace $ws1 floating enable border pixel 3
-for_window [class="Pcmanfm"] move to workspace $ws5 floating enable border pixel 3
+for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 6
+for_window [class="Stella"] move to workspace $ws6 floating enable border pixel 5
+for_window [class="thonny"] move to workspace $ws1 border pixel 3
+for_window [class="Thunar"] move to workspace $ws5 floating enable border pixel 5
 for_window [class="Notepadqq"] floating enable border pixel 3
 for_window [class="qpwgraph"] floating enable border pixel 4
-for_window [class="fcitx-config-gtk3"] floating enable border pixel 3
-#for_window [class="PacketTracer"] move to workspace $ws3 floating enable border pixel 3
-for_window [class="Zathura"] move to workspace $ws5 floating enable border pixel 1
-for_window [class="Soffice"] move to workspace $ws5 floating enable border pixel 3
-for_window [class="Thunderbird"] move to workspace $ws3 floating enable border pixel 2
-for_window [class="Telegram"] move to workspace $ws3 floating enable border pixel 2
-for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 2
+for_window [class="fcitx-config-gtk3"] floating enable border pixel 4
+#for_window [class="PacketTracer"] move to workspace $ws3 border pixel 4
+for_window [class="Zathura"] move to workspace $ws5 floating enable border pixel 2
+for_window [class="Soffice"] move to workspace $ws5 border pixel 4
+for_window [class="Thunderbird"] move to workspace $ws3 floating enable border pixel 3
+for_window [class="Telegram"] move to workspace $ws3 floating enable border pixel 4
+for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 4
 for_window [class="gnome-mahjongg"] move to workspace $ws6 floating enable border pixel 3
 for_window [class="lbreakout2"] move to workspace $ws6 floating enable border pixel 3
 for_window [class="lxappearance"] floating enable border pixel 2
@@ -278,11 +276,11 @@ for_window [class="vlc"] move to workspace $ws4 floating enable border pixel 3
 
 # Automatically starting applications on i3 blocks
 exec_always picom -cCGf
-exec_always feh --bg-scale ~/Pictures/piccas_img/img69.jpg
-#exec_always ~/./pipewire-pulse
+exec_always feh --bg-scale ~/Pictures/piccas_img/videoblocks-animation-of-infinity-time-clock-infinity-life-concept-digital-generated.png
+exec_always ~/./pipewire-pulse
 exec_always xscreensaver -nosplash
-#exec_always fcitx5 -s 3
-exec_always xrdb ~/.Xresources
+exec_always fcitx -s 3
+#exec_always xrdb ~/.Xresources
 
 # Don't change focus with mouse
 focus_follows_mouse no
