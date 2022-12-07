@@ -9,4 +9,5 @@ i3-gaps is a fork of i3wm, a tiling window manager for X11. It is kept up to dat
 ![image](https://i.imgur.com/6hJDa3D.png)
 ![image](https://i.imgur.com/W0datS9.png)
 ![image](https://i.imgur.com/r7rqfcl.jpg)
-
+![image](https://i.imgur.com/YZMqix2.jpg)
+![image](https://i.imgur.com/Gh6yXKG.jpg)
