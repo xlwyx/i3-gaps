@@ -241,20 +241,21 @@ bindsym --release $m+Shift+s exec ~/./screenshot
 # Keybinding for i3lock
 bindsym $m+x exec i3lock
 
+
 # Assign Programs to Workspaces
 for_window [class="mpv"] floating enable border pixel 2
-for_window [class="firefox"] move to workspace $ws2 floating enable border pixel 4
+for_window [class="firefox"] move to workspace $ws2 floating enable border pixel 4 move position 10 12
 for_window [class="Leafpad"] floating enable border pixel 4
 for_window [class="Alacritty"] default_orientation horizontal border pixel 3
 for_window [class="galculator"] floating enable border pixel 2
 for_window [class="Deluge-gtk3"] move to workspace $ws4 floating enable border pixel 4
-for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 6
+for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 6 move position 30 48
 for_window [class="Stella"] move to workspace $ws6 floating enable border pixel 5
 for_window [class="thonny"] move to workspace $ws1 border pixel 3
-for_window [class="Thunar"] move to workspace $ws5 floating enable border pixel 5
-for_window [class="Notepadqq"] floating enable default_orientation horizontal border pixel 3
+for_window [class="Thunar"] move to workspace $ws5 floating enable border pixel 5 move position 6 52
+for_window [class="Notepadqq"] floating enable default_orientation horizontal border pixel 3 move position 600 500
 for_window [class="qpwgraph"] floating enable border pixel 4
-for_window [class="fcitx-config-gtk3"] floating enable border pixel 4
+for_window [class="fcitx-config-gtk3"] floating enable border pixel 4 move position 4 90
 #for_window [class="PacketTracer"] move to workspace $ws3 border pixel 4
 for_window [class="Zathura"] move to workspace $ws5 floating enable border pixel 2
 for_window [class="Soffice"] move to workspace $ws5 border pixel 4
@@ -263,11 +264,12 @@ for_window [class="Telegram"] move to workspace $ws3 floating enable border pixe
 for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 4
 for_window [class="gnome-mahjongg"] move to workspace $ws6 floating enable border pixel 3
 for_window [class="lbreakout2"] move to workspace $ws6 floating enable border pixel 3
-for_window [class="lxappearance"] floating enable border pixel 2
+for_window [class="lxappearance"] move position center floating enable border pixel 2
 for_window [class="Pavucontrol"] floating enable border pixel 3
 for_window [class="Gimp"] move to workspace $ws4
 for_window [class="SimpleScreenRecorder"] move to workspace $ws4 floating enable border pixel 2
-for_window [class="vlc"] move to workspace $ws4 floating enable border pixel 3
+for_window [class="vlc"] move to workspace $ws4 floating enable border pixel 3 move position 40 100
+
 
 # Automatically starting applications on i3 blocks
 exec_always picom -cCGf
