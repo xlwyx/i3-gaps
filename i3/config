@@ -183,13 +183,13 @@ mode "resize" {
 bindsym $m+r mode "resize"
 
 # Window Colors
-set $bgcolor    #b4ea7e
-set $ibgcolor   #ea7eb4
-set $fws        #b1d2f2cc
+set $bgcolor    #97c3ee
+set $ibgcolor   #cce557cc
+set $fws        #221f54cc
 set $barcolor   #182c25
-set $textcolor  #0057e7
-set $itextcolor #008744
-set $ubgcolor   #317873
+set $textcolor  #fdf9ea
+set $itextcolor #fefefb30
+set $ubgcolor   #e67300
 
 #                         border              background        text          indicator
 client.focused            $bgcolor            $bgcolor          $textcolor    $bgcolor
