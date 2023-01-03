@@ -125,12 +125,12 @@ bindsym $m+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  kodas"
-set $ws2 "2:  internetas"
-set $ws3 "3:  paštas"
-set $ws4 "4:  dizainas"
-set $ws5 "5:  biuras"
-set $ws6 "6:  žaidimai"
+set $ws1 "1:  Kodi"
+set $ws2 "2:  Internets"
+set $ws3 "3:  Pasts"
+set $ws4 "4:  Dizains"
+set $ws5 "5:  Birojs"
+set $ws6 "6:  Spēles"
 
 # switch to workspace
 bindsym $m+1 workspace number $ws1
