@@ -59,7 +59,7 @@ bindsym $m+Return exec alacritty
 bindsym $m+b exec firefox
 bindsym $m+y exec signal-desktop
 bindsym $m+o exec telegram-desktop
-bindsym $m+c exec notepadqq
+bindsym $m+c exec 
 
 # Use mouse+mod to drag floating window to their wanted position
 floating_modifier $m
@@ -252,8 +252,7 @@ for_window [class="Deluge-gtk3"] move to workspace $ws4 floating enable border p
 for_window [class="mGBA"] move to workspace $ws6 floating enable border pixel 6 move position 22 48
 for_window [class="Stella"] move to workspace $ws6 floating enable border pixel 5 move position 30 36
 for_window [class="thonny"] move to workspace $ws1 border pixel 3
-for_window [class="Thunar"] move to workspace $ws5 floating enable border pixel 5 move position 14 52
-for_window [class="Notepadqq"] floating enable default_orientation horizontal border pixel 3 move position 60 47
+for_window [class="pcmanfm"] move to workspace $ws5 floating enable border pixel 5 move position 14 52
 for_window [class="qpwgraph"] floating enable border pixel 4 move psition 35 59
 for_window [class="fcitx-config-gtk3"] floating enable border pixel 4 move position 9 90
 #for_window [class="PacketTracer"] move to workspace $ws3 border pixel 4
@@ -262,6 +261,7 @@ for_window [class="Soffice"] move to workspace $ws5 border pixel 4
 for_window [class="Thunderbird"] move to workspace $ws3 floating enable border pixel 3 move position 10 14
 for_window [class="Telegram"] move to workspace $ws3 floating enable border pixel 4 move position 9 12
 for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 4 move position 8 14
+for_window [class="Whatsapp-"] move to workspace $ws3 floating enable border pixel 4 move position 8 14
 for_window [class="gnome-mahjongg"] move to workspace $ws6 floating enable border pixel 3 move position 12 14
 for_window [class="lbreakout2"] move to workspace $ws6 floating enable border pixel 3 move position 23 16
 for_window [class="lxappearance"] move position center floating enable border pixel 2 move position 23 22
