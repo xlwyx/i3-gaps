@@ -53,7 +53,7 @@ set $right semicolon
 floating_modifier $m
 
 # start a terminal
-bindsym $m+Return exec alacritty
+bindsym $m+Return exec urxvt
 
 # start applications:
 bindsym $m+b exec firefox
@@ -125,12 +125,12 @@ bindsym $m+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:  kodas"
-set $ws2 "2:  internetas"
-set $ws3 "3:  paštas"
-set $ws4 "4:  dizainas"
-set $ws5 "5:  biuras"
-set $ws6 "6:  žaidimai"
+set $ws1 "1:  kod"
+set $ws2 "2:  internet"
+set $ws3 "3:  posta"
+set $ws4 "4:  Tasarım"
+set $ws5 "5:  ofis"
+set $ws6 "6:  oyunlar"
 
 # switch to workspace
 bindsym $m+1 workspace number $ws1
@@ -244,10 +244,10 @@ bindsym $m+x exec i3lock
 
 # Assign Programs to Workspaces
 for_window [class="mpv"] floating enable border pixel 2 move position 18 20
-for_window [class="Firefox"] move to workspace $ws2 floating enable border pixel 4 move position 10 12
+for_window [class="firefox"] move to workspace $ws2 floating enable border pixel 4 move position 10 12
 for_window [class="Leafpad"] floating enable border pixel 4
 for_window [class="Notepadqq"] move to workspace $ws5 floating enable border pixel 4 move position 12 22
-for_window [class="Alacritty"] default_orientation horizontal border pixel 3
+for_window [class="URxvt"] default_orientation horizontal border pixel 3
 for_window [class="galculator"] floating enable border pixel 2 move position 89 40
 for_window [class="Deluge"] move to workspace $ws4 floating enable border pixel 4 move position 12 46
 for_window [class="calibre"] move to workspace $ws5 floating enable border pixel 4 move position 10 12
@@ -259,7 +259,7 @@ for_window [class="qpwgraph"] floating enable border pixel 4 move psition 35 59
 for_window [class="fcitx5-config-qt"] floating enable border pixel 4 move position 9 90
 #for_window [class="PacketTracer"] move to workspace $ws3 border pixel 4
 for_window [class="Zathura"] move to workspace $ws5 floating enable border pixel 2 move position 18 61
-for_window [class="libreoffice"] move to workspace $ws5 border pixel 4
+for_window [class="OpenOffice"] move to workspace $ws5 floating enable border pixel 4 move possition 10 10
 for_window [class="Thunderbird"] move to workspace $ws3 floating enable border pixel 3 move position 10 14
 for_window [class="Telegram"] move to workspace $ws3 floating enable border pixel 4 move position 9 12
 for_window [class="Signal"] move to workspace $ws3 floating enable border pixel 4 move position 8 14
@@ -277,11 +277,12 @@ for_window [class="vlc"] move to workspace $ws4 floating enable border pixel 3 m
 
 # Automatically starting applications on i3 blocks
 exec_always picom -cCGf
-exec_always feh --bg-scale ~/Pictures/piccas_img/videoblocks-animation-of-infinity-time-clock-infinity-life-concept-digital-generated.png
+exec_always feh --bg-scale ~/Pictures/piccas_img/Cute-Anime-Wallpapers-Desktop-Background.jpg
 exec_always ~/./pipewire-pulse
 exec_always xscreensaver -nosplash
-exec_always fcitx5 -s 3
-#exec_always xrdb ~/.Xresources
+exec_always fcitx -s 3
+exec_always xrdb ~/.Xresources
+
 
 # Don't change focus with mouse
 focus_follows_mouse no
