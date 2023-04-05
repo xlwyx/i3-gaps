@@ -1,7 +1,7 @@
 
 # packs #
 
-xorg xorg-xinit i3-gaps i3lock-color i3block dmenu kitty feh leafpad (* mousepad, gedit, medit, etc..) lxappearance mc ranger lm_sensors font-awesome5 picom papirus-icon-theme plata-theme rofi Adapta acpi
+xorg xorg-xinit i3-gaps i3lock-color i3block rxvt-unicode rofi feh mousepad (* leafpad, gedit, medit, etc..) lxappearance mc ranger lm_sensors font-awesome5 picom papirus-icon-theme plata-theme rofi Adapta acpi
 
 # enable display manager #
 cp -r /etc/X11/xinit/xinitrc ~/.xinitrc
