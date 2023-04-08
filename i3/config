@@ -1,99 +1,325 @@
-# i3blocks configuration file
+#------------------------------------------------------------------------------------------------------------------------------------------#
+##                                                               i3-wm                                                                  ##
+##------------------------------------------------------------------------------------------------------------------------------------##
+# twitter:        @tuxi_xx
+
+# i3 config file (v4)
 #
-# The i3blocks man page describes the usage of the binary,
-# and its website describes the configuration:
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
 #
 
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Mononoki 11
 
-# Global properties
-separator=true
-separator_block_width=13
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:Fantasque Sans Mono 11
 
-[documentation1]
-color=#fafad2c7
-full_text= Twit
-website=https://www.twitter.com
-command=xdg-open "$website"
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
 
-[documentation2]
-color=#fafad2c7
-full_text= Red
-website=https://www.reddit.com
-command=xdg-open "$website"
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
 
-[wifi]
-command=~/.config/scripts/wifi
-label=直 
-INTERFACE=wlan0
-interval=60
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-[memory]
-command=~/.config/scripts/memory
-color=#f8e9e5
-background=#e5e6eb52
-label= 
-interval=30
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
 
-[memory]
-command=~/.config/scripts/memory
-label=易 
-instance=mem
-#interval=30
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-[batterybar]
-command=~/.config/scripts/batterybar
-label=bat:
-interval=5
-markup=pango
-min_width=bat: ■■■■■
-# Discharging colors low to high
-#C1=#FF0027
-#C2=#FF3B05
-#C3=#FFB923
-#C4=#FFD000
-#C5=#E4FF00
-#C6=#ADFF00
-#C7=#6DFF00
-#C8=#10BA00
-#CHARGING_COLOR=#00AFE3
-#FULL_COLOR=#FFFFFF
-#AC_COLOR=#535353
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
 
-[disk]
-command=~/.config/scripts/disk
-color=#e5f5f8
-background=#006042
-LABEL=﫭 
-#DIR=$HOME
-#ALERT_LOW=10
-interval=30
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier $mod
 
-[temperature]
-command=~/.config/scripts/temperature
-color=#e5f8f2
-background=#00b2db52
-label=TEMP 
-interval=10
-T_WARN=70
-T_CRIT=90
-#SENSOR_CHIP=""
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
 
-[greetings_1]
-color=#a4a9d7
-command=echo " Hoş geldiniz, $USER! "
-interval=once
+# start a terminal
+bindsym $mod+Return exec urxvt
 
-[greetings_2]
-color=#a4a9d7
-command=echo " destansı zamanlar "
-interval=once
+# start browser
+bindsym $mod+b exec firefox
 
-[greetings_3]
-color=#a4a9d7
-command=echo " yağmurlu günler "
-interval=once
+# start chat
+bindsym $mod+p exec telegram-desktop
+bindsym $mod+o exec signal-desktop
 
-[time]
-command=date '+%Y-%m-%d  %H:%M:%S'
-color=#e3f3f1
-interval=1
+# start mail
+bindsym $mod+m exec thunderbird
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec --no-startup-id dmenu_run
+# A more modern dmenu replacement is rofi:
+bindsym $mod+d exec "rofi -show-icons -show drun -font JetBrains Mono NerdFont 11"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:  internetas"
+set $ws2 "2: 󰇮 paštas"
+set $ws3 "3:  kodas"
+set $ws4 "4: 󰏆 biuras"
+set $ws5 "5:  dizainas"
+set $ws6 "6: 󰠾 filem"
+set $ws7 "7: 󰺶 žaidimai"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# i3-wm logout
+bindsym $mod+Shift+y exec "i3-msg exit"
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod1+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Window Colors
+set $bgcolor    #35baf6
+set $ibgcolor   #684038e6
+set $fws        #6cd97380
+set $barcolor   #03070b0D
+set $textcolor  #d4d8d4
+set $itextcolor #a0d6b4db
+set $ubgcolor   #ff611a
+
+# class                 border       backgr.     text         indicator    child_border
+client.focused          $bgcolor     $bgcolor    $textcolor   $bgcolor     $bgcolor
+client.unfocused        $ibgcolor    $ibgcolor   $itextcolor  $itextcolor  $ibgcolor
+client.focused_inactive $ibgcolor    $ibgcolor   $itextcolor  $itextcolor  $ibgcolor
+client.urgent           $ubgcolor    $ubgcolor   $textcolor   $ibgcolor    $ibgcolor
+client.placeholder      $ibgcolor    $ibgcolor   $itextcolor  $ibgcolor    $ibgcolor
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    output primary
+    output HDMI2
+    i3bar_command i3bar --transparency
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    font pango:monospace 11
+    colors {
+            background $barcolor
+            separator #0b1314db
+            #                   border       background       text
+            focused_workspace   $fws         $fws             $textcolor
+            inactive_workspace  $ibgcolor    $ibgcolor        $itextcolor
+            urgent_workspace    $ubgcolor    $ubgcolor        $textcolor
+    }
+}
+
+#######################################################################
+# automatically start i3-config-wizard to offer the user to create a
+# keysym-based config which used their favorite modifier (alt or windows)
+#
+# i3-config-wizard will not launch if there already is a config file
+# in ~/.config/i3/config (or $XDG_CONFIG_HOME/i3/config if set) or
+# ~/.i3/config.
+#
+# Please remove the following exec line:
+#######################################################################
+exec i3-config-wizard
+
+
+######################################################################
+# My custom
+####################################################################
+
+# Keybinding for i3lock
+bindsym $mod+Shift+g exec i3lock
+
+# Display screenshot
+bindsym --release $mod+Shift+c exec dbus-launch ~/./screenshot
+
+# Focus follow mouse
+focus_follows_mouse no
+
+# Mouse warping
+mouse_warping output
+
+# Popup during fullscreen
+popup_during_fullscreen smart
+
+# Disable focus wrapping
+focus_wrapping no
+
+# Assign programs to workspaces
+for_window [class="firefox"] move to workspace $ws1 tiling enable borders normal 2
+for_window [class="firefox Dialog"] move to workspace $ws1 floating enable borders normal 2
+for_window [class="Thunar"] move to workspace $ws4 floating enable borders normal 3
+for_window [class="Thunderbird"] move to workspace $ws2 floating enable borders normal 3
+for_window [class="Mousepad"] floating enable borders normal 3
+for_window [class="URxvt"] move to workspace $ws3 tiling enable border pixel 2
+for_window [class="Pavucontrol"] floating enable border pixel 3
+for_window [class="qpwgraph"] floating_modifier enable border pixel 3
+for_window [class="Gimp"] move to workspace $ws5 floating enable borders normal 4
+for_window [class="Inkscape"] move to workspace $ws5 fullscreen enable borders normal 4
+for_window [class="OpenOffice 4.1.14"] move to workspace $ws4 floating enable borders normal 4
+for_window [class="Zathura"] move to workspace $ws4 fullscreen enable borders normal 3
+for_window [class="Mgba-qt"] move to workspace $ws7 floating enable borders normal 6
+for_window [class="Stella"] move to workspace $ws7 floating enable borders normal 4
+for_window [class="Lxappearance"] move to workspace $ws1 floating enable borders normal pixel 3
+for_window [class="Signal"] move to workspace $ws2 floating enable borders normal 3
+for_window [class="TelegramDesktop"] move to workspace $ws2 floating enable borders normal 3
+for_window [class="whatsdesk"] move to workspace $ws2 floating enable borders normal 3
+for_window [class="mpv"] floating enable borders normal 4
+for_window [class="vlc"] move to workspace $ws6 borders normal 2
+for_window [class="fcitx5-config-gtk3"] floating enable borders pixel 4
+for_window [class="System-config-printer.py"] floating enable borders pixel 5
+
+# Automatically starting applications in i3blocks
+exec_always setxkbmap es
+exec_always picom -fFCG
+exec_always feh --bg-scale ~/Pictures/piccas_img/Linux-GNU-GNU_Linux.jpg
+exec_always ~/./pipewire-pulse
+exec_always xscreensaver -nosplash
+exec_always fcitx -s 3
+exec_always rxdb ~/.Xsources
+
+# Gaps
+for_window [class="^.*"] borders pixel 6
+new_window pixel 7
+gaps inner 9
+gaps outer 9
+smart_gaps on
+hide_edge_borders both
+
+# Fibonacci layout
+default_orientation vertical #start in opposite orientation from your monitor
+for_window [class=".*"] split toggle #toggles split at each new window
+bindsym $mod+Shift+e layout toggle split # should already exist but use if split orientation  messes up
+
