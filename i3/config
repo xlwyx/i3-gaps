@@ -263,7 +263,7 @@ exec i3-config-wizard
 bindsym $mod+Shift+g exec i3lock
 
 # Display screenshot
-bindsym --release $mod+Shift+c exec dbus-launch ~/./screenshot
+bindsym --release $mod+Shift+x exec dbus-launch ~/./screenshot
 
 # Focus follow mouse
 focus_follows_mouse no
@@ -277,27 +277,26 @@ popup_during_fullscreen smart
 # Disable focus wrapping
 focus_wrapping no
 
-# Assign programs to workspaces
 for_window [class="firefox"] move to workspace $ws1 tiling enable borders normal 2
-for_window [class="firefox Dialog"] move to workspace $ws1 floating enable borders normal 2
-for_window [class="Thunar"] move to workspace $ws4 floating enable borders normal 3
-for_window [class="Thunderbird"] move to workspace $ws2 floating enable borders normal 3
-for_window [class="Mousepad"] floating enable borders normal 3
+for_window [class="firefox Dialog"] move to workspace $ws1 floating enable borders normal 2, move position 860 px 830 px, resize set 492 px 483 px
+for_window [class="Thunar"] move to workspace $ws4 floating enable borders normal 3, move position 860 px 830 px, resize set 1040 px 1003 px
+for_window [class="thunderbird"] move to workspace $ws2 floating enable borders normal 3, move position 860 px 830 px, resize set 1150 px 1000 px
+for_window [class="Mousepad"] floating enable borders normal 3, move position 860 px 830 px, resize set 1040 px 1003 px
 for_window [class="URxvt"] move to workspace $ws3 tiling enable border pixel 2
-for_window [class="Pavucontrol"] floating enable border pixel 3
-for_window [class="qpwgraph"] floating_modifier enable border pixel 3
-for_window [class="Gimp"] move to workspace $ws5 floating enable borders normal 4
+for_window [class="Pavucontrol"] floating enable border pixel 3, move position 660 px 760 px, resize set 840 px 803 px
+for_window [class="qpwgraph"] floating_modifier enable border pixel 3, move position 760 px 660 px, resize set 044 px 806 px
+for_window [class="Gimp"] move to workspace $ws5 floating enable borders normal 4, move position 860 px 830 px, resize set 840 px 643 px
 for_window [class="Inkscape"] move to workspace $ws5 fullscreen enable borders normal 4
 for_window [class="OpenOffice 4.1.14"] move to workspace $ws4 floating enable borders normal 4
 for_window [class="Zathura"] move to workspace $ws4 fullscreen enable borders normal 3
-for_window [class="Mgba-qt"] move to workspace $ws7 floating enable borders normal 6
-for_window [class="Stella"] move to workspace $ws7 floating enable borders normal 4
-for_window [class="Lxappearance"] move to workspace $ws1 floating enable borders normal pixel 3
-for_window [class="Signal"] move to workspace $ws2 floating enable borders normal 3
-for_window [class="TelegramDesktop"] move to workspace $ws2 floating enable borders normal 3
-for_window [class="whatsdesk"] move to workspace $ws2 floating enable borders normal 3
+for_window [class="Mgba-qt"] move to workspace $ws7 floating enable borders normal 6, move position 750 px 830 px, resize set 1040 px 1003 px
+for_window [class="Stella"] move to workspace $ws7 floating enable borders normal 4, move position 860 px 830 px, resize set 1040 px 1003 px
+for_window [class="Lxappearance"] move to workspace $ws1 floating enable borders normal pixel 2
+for_window [class="Signal"] move to workspace $ws2 floating enable borders normal 2, move position 860 px 830 px, resize set 660 px 1006 px
+for_window [class="TelegramDesktop"] move to workspace $ws2 floating enable borders normal 3, move position 860 px 830 px, resize set 566 px 1000 px
+for_window [class="whatsdesk"] move to workspace $ws2 floating enable borders normal 3, move position 760 px 400 px, resize set 680 px 1003 px
 for_window [class="mpv"] floating enable borders normal 4
-for_window [class="vlc"] move to workspace $ws6 borders normal 2
+for_window [class="vlc"] move to workspace $ws6 tiling enable borders normal 6
 for_window [class="fcitx5-config-gtk3"] floating enable borders pixel 4
 for_window [class="System-config-printer.py"] floating enable borders pixel 5
 
